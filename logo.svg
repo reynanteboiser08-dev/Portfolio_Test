@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+    <title>Reynante Boiser monogram</title>
+    <!-- Cut-corner frame, inspired by the shape of a code bracket. -->
+    <path d="M17 3H49L61 15V47L47 61H15L3 49V17Z"
+          fill="#10131a" stroke="#6d7cff" stroke-width="1.5"/>
+    <!-- Geometric R and B. Edit the stroke colors to match a new theme. -->
+    <g stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M16 46V18H26L33 25V30L27 36H16M26 36L34 46"
+              stroke="#f5f7fb"/>
+        <path d="M39 18V46H46L53 39V36L47 31L52 26V24L46 18H39M39 31H47"
+              stroke="#9b8cff"/>
+    </g>
+    <!-- A small terminal-like accent in the frame. -->
+    <path d="M23 55H34" stroke="#6d7cff" stroke-width="2" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,49 @@
+# Reynante Boiser — Portfolio
+
+The original dark portfolio design, enhanced with subtle entrance animations, card hover effects, and navigation underlines. Built with plain HTML, CSS, and JavaScript; no installation or build step is required. Open `index.html` in a browser.
+
+## File guide
+
+- `index.html`: All text, skills, projects, and contact details. Comments mark each editable section.
+- `style.css`: Original layout and colors, organized into numbered sections. Theme settings are in `:root`; effects are in section 11; responsive layouts in section 12; scroll effects in section 13; reduced-motion support in section 14.
+- `script.js`: Named functions for mobile navigation and entrance effects.
+- `effects.js`: Floating background particles, connecting lines, and a cursor glow. Change the settings at the top to adjust density, speed, or color.
+- `scroll-effects.js`: A glowing page-progress trail, chapter markers, active navigation, and heading underlines that draw as sections enter the screen. Uses native scrolling for mouse, touch, and keyboard input.
+- `original/`: Unchanged copies of the original three source files.
+
+## Edit the content
+
+The custom RB monogram is in `assets/logo.svg`, shared by the header and browser tab icon. Edit its paths or stroke colors directly; it remains sharp at any screen resolution. Its displayed size is controlled by `.logo img` in `style.css` and the image dimensions in `index.html`.
+
+Change your name, biography, and role directly in `index.html`. The sample developer object in the hero code window is display text; edit it there too. Update the page title and description in `<head>` when needed.
+
+## Add projects or skills
+
+Copy an entire `<article class="project-card">...</article>` inside `.projects-grid`, then edit the project number, category, name, description, and tags. Use `project-card featured` when a project should span both columns on desktop. Copy a `skill-card` article inside `.skills-grid` to add a skill. New cards automatically receive the same effects.
+
+## Customize the appearance
+
+Edit the variables in `:root` near the top of `style.css` to change colors or maximum page width. Each CSS property is on its own line. Keep mobile adjustments in the responsive section so they are easy to find.
+
+## Adjust effects
+
+- Scroll effects are styled in CSS section 13; reduced-motion support is in section 14. Change `readingLine` in `scroll-effects.js` to adjust when a chapter becomes active. Change the underline width in CSS to adjust its length. Newly added direct child sections of `main` get markers automatically; give them a unique `id` and an `h2` title.
+- Reduced motion keeps heading underlines static; the progress trail and chapter indicator still reflect your position. The scroll effect never changes scroll speed or locks scrolling. Remove the `scroll-effects.js` script tag to disable it.
+
+- Background particles move continuously and a soft purple glow follows the mouse. The bottom-right button pauses or resumes the background effect. Reduced-motion preferences use a static background; hidden tabs stop animating.
+- To remove the background effect, remove the `effects.js` script tag, `backgroundEffects` canvas, and `effectsToggle` button from `index.html`.
+
+- Change the `duration` (milliseconds) and `translateY` distance in `initEntranceEffects()` in `script.js` to adjust entrance effects.
+- Remove the `initEntranceEffects();` call at the bottom to disable entrance effects.
+- Hover movement, glow, and navigation underlines are grouped in section 11 of `style.css`.
+- Entrance effects play once per element per page load. Visitors who prefer reduced motion see content without these animations.
+- All content remains visible and mobile navigation remains available when JavaScript is disabled.
+
+## Update contact links
+
+The contact section contains your email, GitHub, and Facebook links. To change them, edit each anchor's `href` and visible label in `index.html`. Keep the `mailto:` prefix for the email address. Social links use their normal HTTPS URLs and work without JavaScript.
+
+## Publish
+
+Upload `index.html`, `style.css`, `script.js`, `effects.js`, `scroll-effects.js`, and the `assets/` folder together to a static website host. The `original/` folder is a reference copy and is not needed on the live site.
+

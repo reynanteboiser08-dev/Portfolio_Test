@@ -1,0 +1,815 @@
+/* 1. Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. Theme — edit colors and page width here */
+:root {
+    --bg: #080a0f;
+    --surface: #10131a;
+    --surface-2: #151923;
+    --text: #f5f7fb;
+    --muted: #9ca5b5;
+    --line: #252b38;
+    --accent: #6d7cff;
+    --accent-2: #9b7cff;
+    --max: 1180px;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    isolation: isolate;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* Decorative canvas stays behind content and never intercepts clicks. */
+#backgroundEffects {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.effects-toggle {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 110;
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--muted);
+    font: inherit;
+    font-size: 0.7rem;
+    cursor: pointer;
+}
+
+.effects-toggle:hover {
+    color: var(--text);
+    border-color: var(--accent);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* 3. Header and navigation */
+.navbar {
+    width: 100%;
+    max-width: var(--max);
+    margin: auto;
+    padding: 22px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(8, 10, 15, 0.88);
+    backdrop-filter: blur(16px);
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 10px;
+}
+
+.logo img {
+    display: block;
+    width: 44px;
+    height: 44px;
+    transition: filter 220ms ease;
+}
+
+.logo:hover img,
+.logo:focus-visible img {
+    filter: drop-shadow(0 0 8px rgba(109, 124, 255, 0.4));
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+}
+
+nav a {
+    color: var(--muted);
+    font-size: 0.92rem;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: var(--text);
+}
+
+.menu-toggle {
+    display: none;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* 4. Introduction and code window */
+.hero > * {
+    min-width: 0;
+}
+
+.hero {
+    min-height: 88vh;
+    max-width: var(--max);
+    margin: auto;
+    padding: 90px 24px 100px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 70px;
+}
+
+.eyebrow {
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    margin-bottom: 16px;
+}
+
+.hero h1 {
+    max-width: 800px;
+    font-size: clamp(3.2rem, 7vw, 6.6rem);
+    line-height: 0.95;
+    letter-spacing: -0.065em;
+    margin-bottom: 28px;
+}
+
+.hero-text {
+    max-width: 620px;
+    color: var(--muted);
+    font-size: 1.08rem;
+    margin-bottom: 34px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.btn {
+    display: inline-flex;
+    padding: 13px 20px;
+    border-radius: 9px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.primary {
+    background: var(--accent);
+    color: #fff;
+}
+
+.secondary {
+    border: 1px solid var(--line);
+    color: var(--text);
+}
+
+.quick-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 34px;
+}
+
+.quick-info span,
+.tags span {
+    padding: 6px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 0.75rem;
+}
+
+.code-window {
+    border: 1px solid var(--line);
+    background: #0d1016;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+}
+
+.window-bar {
+    height: 42px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--line);
+}
+
+.window-bar span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #3b414f;
+}
+
+.code-window pre {
+    padding: 28px;
+    overflow-x: auto;
+}
+
+.code-window code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    color: #cbd2e1;
+    font-size: 0.82rem;
+    line-height: 1.8;
+}
+
+/* 5. Shared sections and about */
+.section {
+    max-width: var(--max);
+    margin: auto;
+    padding: 110px 24px;
+}
+
+.alt {
+    max-width: none;
+    padding-left: max(24px, calc((100% - var(--max)) / 2 + 24px));
+    padding-right: max(24px, calc((100% - var(--max)) / 2 + 24px));
+    background: var(--surface);
+}
+
+.section-heading {
+    max-width: 720px;
+    margin-bottom: 50px;
+}
+
+.section-heading h2 {
+    font-size: clamp(2.1rem, 4vw, 4rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 80px;
+}
+
+.about-grid p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 18px;
+    max-width: 700px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    align-self: start;
+}
+
+.stat {
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--surface);
+}
+
+.stat strong {
+    display: block;
+    color: var(--accent);
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+}
+
+.stat span {
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+/* 6. Skills */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.skill-card,
+.project-card,
+.process-item {
+    border: 1px solid var(--line);
+    background: var(--surface-2);
+    border-radius: 14px;
+}
+
+.skill-card {
+    padding: 28px;
+}
+
+.skill-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    color: var(--accent);
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.skill-card h3 {
+    margin-bottom: 10px;
+}
+
+.skill-card p,
+.project-card p,
+.process-item p {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+/* 7. Projects */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.project-card {
+    min-height: 330px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-card.featured {
+    grid-column: span 2;
+    min-height: 360px;
+    background: linear-gradient(135deg, #141a2b, var(--surface-2));
+}
+
+.project-number {
+    color: var(--accent);
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.project-type {
+    color: var(--accent);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    margin-bottom: 10px;
+}
+
+.project-content h3 {
+    font-size: 2rem;
+    letter-spacing: -0.04em;
+    margin-bottom: 12px;
+}
+
+.project-content p {
+    max-width: 680px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 22px;
+}
+
+/* 8. Work process */
+.process-section {
+    border-top: 1px solid var(--line);
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.process-item {
+    padding: 26px;
+}
+
+.process-item > span {
+    color: var(--accent);
+    font-family: monospace;
+}
+
+.process-item h3 {
+    margin: 24px 0 8px;
+}
+
+/* 9. Contact */
+.contact-section {
+    padding-bottom: 80px;
+}
+
+.contact-box {
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: clamp(30px, 6vw, 70px);
+    background: linear-gradient(135deg, #121625, #0d1016);
+}
+
+.contact-box h2 {
+    max-width: 650px;
+    font-size: clamp(2.4rem, 5vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    margin-bottom: 20px;
+}
+
+.contact-box > p:not(.eyebrow) {
+    color: var(--muted);
+    max-width: 600px;
+}
+
+.contact-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 42px;
+}
+
+.contact-link {
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.contact-link:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.contact-link span {
+    display: block;
+    color: var(--muted);
+    font-size: 0.72rem;
+    margin-bottom: 5px;
+}
+
+.contact-link strong {
+    font-size: 0.86rem;
+    word-break: break-word;
+}
+
+/* 10. Footer */
+footer {
+    max-width: var(--max);
+    margin: auto;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    font-size: 0.8rem;
+}
+
+footer a {
+    color: var(--text);
+}
+
+/* 11. Subtle effects and keyboard accessibility */
+/* Keep hover effects on devices with a mouse or trackpad. */
+.skill-card,
+.project-card,
+.process-item,
+.stat,
+.code-window {
+    transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+nav a {
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 220ms ease;
+}
+
+nav a:focus-visible::after {
+    transform: scaleX(1);
+}
+
+@media (hover: hover) {
+    nav a:hover::after {
+        transform: scaleX(1);
+    }
+
+    .skill-card:hover,
+    .project-card:hover,
+    .process-item:hover,
+    .stat:hover {
+        transform: translateY(-4px);
+        border-color: var(--accent);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+    }
+
+    .code-window:hover {
+        transform: translateY(-4px);
+        border-color: var(--accent);
+        box-shadow: 0 25px 70px rgba(109, 124, 255, 0.12);
+    }
+
+    .primary:hover {
+        box-shadow: 0 8px 24px rgba(109, 124, 255, 0.25);
+    }
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 5px;
+}
+
+.skip-link {
+    position: fixed;
+    top: -100px;
+    left: 20px;
+    z-index: 200;
+    padding: 10px 16px;
+    border-radius: 8px;
+    background: var(--surface);
+}
+
+.skip-link:focus {
+    top: 12px;
+}
+
+/* 12. Responsive layouts */
+@media (max-width: 900px) {
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        padding-top: 70px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-links {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 680px) {
+    .navbar {
+        padding: 18px 20px;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .js-enabled .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 20px;
+        right: 20px;
+        padding: 14px;
+        flex-direction: column;
+        gap: 0;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+    }
+
+    nav.open {
+        display: flex;
+    }
+
+    /* Without JavaScript, keep navigation available in the normal page flow. */
+    html:not(.js-enabled) .navbar {
+        position: relative;
+        flex-wrap: wrap;
+    }
+
+    html:not(.js-enabled) nav {
+        display: flex;
+        position: static;
+        width: 100%;
+        margin-top: 16px;
+    }
+
+    nav a {
+        padding: 12px;
+    }
+
+    .hero {
+        padding: 60px 20px 80px;
+    }
+
+    .hero h1 {
+        font-size: clamp(3rem, 16vw, 5rem);
+    }
+
+    .section,
+    .alt {
+        padding: 80px 20px;
+    }
+
+    .skills-grid,
+    .projects-grid,
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card.featured {
+        grid-column: span 1;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    footer {
+        padding: 22px 20px;
+        flex-direction: column;
+    }
+}
+
+/* 13. Scroll journey — native scrolling controls the trail and heading lines. */
+.scroll-journey {
+    pointer-events: none;
+}
+
+.scroll-track {
+    position: fixed;
+    top: 30vh;
+    left: 14px;
+    width: 2px;
+    height: 40vh;
+    background: var(--line);
+    z-index: 101;
+}
+
+.scroll-trail {
+    width: 100%;
+    height: 100%;
+    transform: scaleY(var(--page-progress, 0));
+    transform-origin: top;
+    background: linear-gradient(var(--accent), var(--accent-2));
+    box-shadow: 0 0 12px rgba(109, 124, 255, 0.6);
+}
+
+.scroll-marker {
+    position: absolute;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    border: 1px solid var(--muted);
+    border-radius: 50%;
+    background: var(--bg);
+    transform: translate(-50%, -50%);
+}
+
+.scroll-marker.is-reached {
+    border-color: var(--accent);
+    background: var(--accent);
+}
+
+.scroll-marker.is-current {
+    box-shadow: 0 0 0 4px rgba(109, 124, 255, 0.18), 0 0 15px var(--accent);
+}
+
+.scroll-chapter {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 101;
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+}
+
+.scroll-effects-enabled .section-heading h2,
+.scroll-effects-enabled .contact-box h2 {
+    position: relative;
+}
+
+.scroll-effects-enabled .section-heading h2::after,
+.scroll-effects-enabled .contact-box h2::after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    width: min(150px, 40%);
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    transform: scaleX(var(--section-progress, 1));
+    transform-origin: left;
+    box-shadow: 0 0 12px rgba(109, 124, 255, 0.3);
+}
+
+nav a[aria-current="location"] {
+    color: var(--text);
+}
+
+nav a[aria-current="location"]::after {
+    transform: scaleX(1);
+}
+
+.scroll-effects-enabled footer {
+    padding-bottom: 80px;
+}
+
+@media (max-width: 680px) {
+    .scroll-track {
+        left: 5px;
+    }
+
+    .scroll-marker {
+        width: 4px;
+        height: 4px;
+    }
+
+    .scroll-chapter {
+        left: 12px;
+        bottom: 18px;
+        font-size: 0.65rem;
+    }
+}
+
+/* 14. Respect the visitor's motion preference. */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .btn:hover,
+    .contact-link:hover,
+    .skill-card:hover,
+    .project-card:hover,
+    .process-item:hover,
+    .stat:hover,
+    .code-window:hover {
+        transform: none;
+    }
+}

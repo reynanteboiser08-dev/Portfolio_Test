@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Reynante II T. Boiser, Software Engineer.">
+    <title>Reynante II T. Boiser | Software Engineer</title>
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <script src="effects.js" defer></script>
+    <script src="scroll-effects.js" defer></script>
+</head>
+<body>
+    <!-- Decorative background. Customize its settings in effects.js. -->
+    <canvas id="backgroundEffects" aria-hidden="true"></canvas>
+    <!-- Scroll progress is decorative; regular navigation remains available. -->
+    <div class="scroll-journey" id="scrollJourney" aria-hidden="true" hidden>
+        <div class="scroll-track"><div class="scroll-trail"></div></div>
+        <div class="scroll-chapter" id="scrollChapter"></div>
+    </div>
+    <button id="effectsToggle" class="effects-toggle" type="button" aria-pressed="true" hidden>Pause effects</button>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="navbar">
+        <!-- The same editable SVG is used for the logo and browser tab icon. -->
+        <a href="#home" class="logo" aria-label="Reynante Boiser — Home">
+            <img src="/image/R.jpg" alt="" width="100" height="100">
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation" aria-controls="navMenu" aria-expanded="false">
+            ☰
+        </button>
+
+        <nav id="navMenu" aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main id="main">
+        <!-- INTRODUCTION — Edit your name, role, and short introduction here. -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <p class="eyebrow">SOFTWARE ENGINEER</p>
+                <h1>Reynante II T. Boiser</h1>
+                <p class="hero-text">
+                    I build practical software solutions with clean interfaces,
+                    reliable logic, and a focus on solving real-world problems.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn primary">View My Work</a>
+                    <a href="#contact" class="btn secondary">Contact Me</a>
+                </div>
+
+                <div class="quick-info">
+                    <span>Web Development</span>
+                    <span>Software Engineering</span>
+                    <span>Computer Science</span>
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <div class="code-window">
+                    <div class="window-bar">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <pre><code>const developer = {
+  name: "Reynante Boiser",
+  role: "Software Engineer",
+  focus: [
+    "Web Development",
+    "Problem Solving",
+    "System Design"
+  ],
+  status: "Building & Learning"
+};</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT — Update your biography and development principles. -->
+        <section id="about" class="section">
+            <div class="section-heading">
+                <p class="eyebrow">ABOUT ME</p>
+                <h2>Building software with purpose.</h2>
+            </div>
+
+            <div class="about-grid">
+                <div>
+                    <p>
+                        I am Reynante II T. Boiser, a Computer Science student
+                        interested in software engineering, web applications,
+                        system development, and practical technology solutions.
+                    </p>
+                    <p>
+                        My approach focuses on understanding the problem first,
+                        then designing a solution that is usable, maintainable,
+                        and suitable for its intended users.
+                    </p>
+                </div>
+
+                <div class="stats">
+                    <div class="stat">
+                        <strong>01</strong>
+                        <span>Problem First</span>
+                    </div>
+                    <div class="stat">
+                        <strong>02</strong>
+                        <span>Clean Development</span>
+                    </div>
+                    <div class="stat">
+                        <strong>03</strong>
+                        <span>Continuous Learning</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS — Copy a skill-card article to add another skill. -->
+        <section id="skills" class="section alt">
+            <div class="section-heading">
+                <p class="eyebrow">SKILLS</p>
+                <h2>Technical toolkit</h2>
+            </div>
+
+            <div class="skills-grid">
+                <article class="skill-card">
+                    <div class="skill-icon">&lt;/&gt;</div>
+                    <h3>Frontend</h3>
+                    <p>HTML, CSS, JavaScript, responsive layouts, and interactive web interfaces.</p>
+                </article>
+
+                <article class="skill-card">
+                    <div class="skill-icon">{ }</div>
+                    <h3>Programming</h3>
+                    <p>Problem solving, algorithms, application logic, debugging, and structured code.</p>
+                </article>
+
+                <article class="skill-card">
+                    <div class="skill-icon">DB</div>
+                    <h3>Systems & Data</h3>
+                    <p>Database concepts, information systems, data handling, and software architecture.</p>
+                </article>
+
+                <article class="skill-card">
+                    <div class="skill-icon">AI</div>
+                    <h3>AI Integration</h3>
+                    <p>Exploring AI-assisted applications, semantic verification, and intelligent software features.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- PROJECTS — Copy a project-card article to add more work. -->
+        <section id="projects" class="section">
+            <div class="section-heading">
+                <p class="eyebrow">PROJECTS</p>
+                <h2>Selected work</h2>
+            </div>
+
+            <div class="projects-grid">
+                <article class="project-card featured">
+                    <div class="project-number">01</div>
+                    <div class="project-content">
+                        <p class="project-type">THESIS PROJECT</p>
+                        <h3>TruthLens</h3>
+                        <p>
+                            A web-based verification concept designed to help users
+                            evaluate text and image information through AI-assisted
+                            semantic analysis and evidence retrieval.
+                        </p>
+                        <div class="tags">
+                            <span>React</span>
+                            <span>AI</span>
+                            <span>Web App</span>
+                            <span>Verification</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-number">02</div>
+                    <div class="project-content">
+                        <p class="project-type">SYSTEM DEVELOPMENT</p>
+                        <h3>CampusFix</h3>
+                        <p>
+                            A school issue reporting and management system concept
+                            for reporting facility problems and tracking their status.
+                        </p>
+                        <div class="tags">
+                            <span>Web System</span>
+                            <span>Database</span>
+                            <span>CRUD</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-number">03</div>
+                    <div class="project-content">
+                        <p class="project-type">PERSONAL PROJECT</p>
+                        <h3>Developer Portfolio</h3>
+                        <p>
+                            A responsive personal website presenting my technical
+                            skills, projects, learning goals, and contact information.
+                        </p>
+                        <div class="tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- PROCESS — Edit the steps you use when building projects. -->
+        <section id="process" class="section process-section">
+            <div class="section-heading">
+                <p class="eyebrow">WORK PROCESS</p>
+                <h2>How I approach projects</h2>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-item">
+                    <span>01</span>
+                    <h3>Understand</h3>
+                    <p>Define the problem, users, requirements, and expected result.</p>
+                </div>
+                <div class="process-item">
+                    <span>02</span>
+                    <h3>Design</h3>
+                    <p>Plan the structure, user flow, data, and technical approach.</p>
+                </div>
+                <div class="process-item">
+                    <span>03</span>
+                    <h3>Develop</h3>
+                    <p>Build the solution with readable code and practical features.</p>
+                </div>
+                <div class="process-item">
+                    <span>04</span>
+                    <h3>Improve</h3>
+                    <p>Test, fix issues, gather feedback, and improve the system.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT — Edit the destinations and visible labels here. -->
+        <section id="contact" class="section contact-section">
+            <div class="contact-box">
+                <p class="eyebrow">CONTACT</p>
+                <h2>Let's build something useful.</h2>
+                <p>
+                    If you want to discuss a project, software idea, or collaboration,
+                    send me a message.
+                </p>
+
+                <div class="contact-links">
+                    <a href="mailto:reynanteboiser08@gmail.com" class="contact-link">
+                        <span>Email</span>
+                        <strong>reynanteboiser08@gmail.com</strong>
+                    </a>
+                    <a href="https://github.com/reynanteboiser08-dev" class="contact-link" id="githubLink">
+                        <span>GitHub</span>
+                        <strong>github.com/reynanteboiser08-dev</strong>
+                    </a>
+                    <a href="https://www.facebook.com/share/1Dopu5y5iT/" class="contact-link" id="facebookLink">
+                        <span>Facebook</span>
+                        <strong>View my Facebook profile</strong>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© <span id="year">2026</span> Reynante II T. Boiser. All rights reserved.</p>
+        <a href="#home">Back to top ↑</a>
+    </footer>
+
+</body>
+</html>
